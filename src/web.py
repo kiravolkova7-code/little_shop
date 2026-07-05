@@ -24,7 +24,6 @@ class ContactsHandler(http.server.BaseHTTPRequestHandler):
 
         parsed_data = parse_qs(post_data_string)
 
-        # Используем новые имена из атрибута name=""
         name = parsed_data.get("username", [""])[0]
         email = parsed_data.get("email", [""])[0]
         message = parsed_data.get("message", [""])[0]
@@ -36,7 +35,6 @@ class ContactsHandler(http.server.BaseHTTPRequestHandler):
         print(f"Сырые данные: {post_data_string}")
         print("-------------------------------\n")
 
-        # 6. Отправляем ответ пользователю (например, перенаправление или текст об успехе)
         self.send_response(200)  # Код 200 OK
         self.send_header("Content-type", "text/html; charset=utf-8")
         self.end_headers()
